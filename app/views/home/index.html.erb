@@ -1,0 +1,93 @@
+<!-- app/views/home/index.html.erb -->
+<div class="box">
+<h2> Chick FB Wall </h2>
+<% if @access_token %>
+  <label><a href="http://www.facebook.com/iownthegame"><img src="https://graph.facebook.com/me/picture?access_token=<%= @access_token %>" /></a></label>
+  <h2><%= @me['name'] %></h2>
+  </div>
+<div class="boxr">
+<h2> photo </h2>
+	<% @photo.each do |v|%>
+	<label>
+		<table><tr><td>
+		<a href="http://facebook.com/<%=v["from"]["id"]%>"><img src="https://graph.facebook.com/<%=v["from"]["id"]%>/picture"></a></td>
+		<td width="10px"></td><td><%= v["from"]["name"] %></td></tr></table>
+		<% if v["message"]==nil%>
+		<span><%= v["story"]%></span><br>
+		<%else%>
+		<span><%= v["message"]%></span><br>
+		<%end%>
+		<span><a href=<%=v["link"]%>><img src=<%=v["picture"]%>></a></span>
+	</label>		
+	<%end%>
+</div>
+<div class="boxl">
+<h2> video </h2>
+	<% @video.each do |v|%>
+	<label>
+		<table><tr><td>
+		<a href="http://facebook.com/<%=v["from"]["id"]%>"><img src="https://graph.facebook.com/<%=v["from"]["id"]%>/picture"></a></td>
+		<td width="10px"></td><td><%= v["from"]["name"] %></td></tr></table>
+		<span><%= v["message"]%></span><br>
+		<span><a href=<%=v["link"]%>><img src=<%=v["picture"]%>></a></span>
+	</label>		
+	<%end%>
+</div>
+<div class="boxr">
+<h2> status </h2>
+	<% @status.each do |v|%>
+	<label>
+		<table><tr><td>
+		<a href="http://facebook.com/<%=v["from"]["id"]%>"><img src="https://graph.facebook.com/<%=v["from"]["id"]%>/picture"></a></td>
+		<td width="10px"></td><td><%= v["from"]["name"] %></td></tr></table>
+		<%if v["actions"] != nil %>
+		<a href=<%=v["actions"][0]["link"]%>><span><%= v["message"] %></span></a>
+		<%end%>
+	</label>		
+	<%end%>
+</div>
+<div class="boxl">
+<h2> link </h2>
+	<% @link.each do |v|%>
+	<label>
+		<table><tr><td>
+		<a href="http://facebook.com/<%=v["from"]["id"]%>"><img src="https://graph.facebook.com/<%=v["from"]["id"]%>/picture"></a></td>
+		<td width="10px"></td><td><%= v["from"]["name"] %></td></tr></table>
+		<% if v["message"]==nil%>
+		<span><%= v["story"]%></span><br>
+		<%else%>
+		<span><%= v["message"]%></span><br>
+		<%end%>
+		<span><a href=<%=v["link"]%>><img src=<%=v["picture"]%>></a></span>
+	</label>
+	<%end%>		
+</div>
+<div class="boxr">
+<h2> check in </h2>
+	<% @checkin.each do |v|%>
+	<label>
+		<table><tr><td>
+		<a href="http://facebook.com/<%=v["from"]["id"]%>"><img src="https://graph.facebook.com/<%=v["from"]["id"]%>/picture"></a></td>
+		<td width="10px"></td><td><%= v["from"]["name"] %></td></tr></table>
+		<span><%= v["message"]%></span><br>
+		<span>@<%= v["name"]%></span><br>
+		<a href=<%=v["actions"][0]["link"]%>><span><img src=<%= v["picture"]%>></span></a>
+	</label>		
+	<%end%>
+</div>
+<div class="boxl">
+<h2> swf </h2>
+	<% @swf.each do |v| %>
+	<label>
+		<table><tr><td>
+		<a href="http://facebook.com/<%=v["from"]["id"]%>"><img src="https://graph.facebook.com/<%=v["from"]["id"]%>/picture"></a></td>
+		<td width="10px"></td><td><%= v["from"]["name"] %></td></tr></table>
+		<span><%= v["message"]%></span><br>
+		<span>@<%= v["name"]%></span><br>
+		<a href=<%=v["actions"][0]["link"]%>><span><img src=<%= v["picture"]%>></span></a>
+	</label>
+	<%end%>
+</div>
+<% end %>
+
+
